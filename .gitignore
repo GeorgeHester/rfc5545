@@ -1,0 +1,16 @@
+.ds_store
+desktop.ini
+.*
+!.gitignore
+!.nvmrc
+
+/.*/
+
+package-lock.json
+
+/node_modules/
+
+/build/
+/working/
+/secret/
+/test/
