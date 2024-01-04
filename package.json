@@ -1,6 +1,6 @@
 {
     "name": "rfc5545",
-    "version": "2.0.0",
+    "version": "0.1.0",
     "description": "Internet Calendaring and Scheduling Core Object Specification (iCalendar) implementation",
     "main": "./build/main.js",
     "scripts": {
