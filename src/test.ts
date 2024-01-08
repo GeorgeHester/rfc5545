@@ -1,7 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import "./string";
-import { RFC5545 } from "./rfc5545";
+import { RFC5545 } from "./rfc5545.js";
 
 function main(): void
 {

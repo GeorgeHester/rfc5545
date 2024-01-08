@@ -1,5 +1,8 @@
+import "./string.js";
 
-
+// Lines are 75 bytes max
+// Lines seperated by CRLF
+// Long lines are split by a CRLF followed by a linear whitespace such as a space or tab
 
 /**
  * Module to define functionality related to RFC5545
@@ -7,45 +10,15 @@
  */
 module RFC5545
 {
-    // Lines are 75 bytes max
-    // Lines seperated by CRLF
-    // Long lines are split by a CRLF followed by a linear whitespace such as a space or tab
-
+    /**
+     * Interface to hold all data associated with a content line
+     */
     interface ContentLine
     {
         name: string;
         parameters?: Array<{ name: string, value: string; }>;
         value: string;
     };
-
-
-    enum Block
-    {
-        Calendar,
-        Event,
-        Invalid
-    };
-
-    export interface Calendar
-    {
-        version: number;
-    }
-
-    function parseBegin(input: string): [string, Block]
-    {
-        let start: number = input.indexOf("BEGIN:") + "BEGIN:".length;
-        let end: number = input.indexOf("\n");
-
-        console.log(start, end);
-
-        let blockId: string = input.substring(start, end);
-
-        if (blockId.startsWith("V") === false) return [input.substring(input.indexOf("END:")), Block.Invalid];
-
-        return [input.substring(input.indexOf("END:")), Block.Calendar];
-    }
-
-
 
     /**
      * Unfold lines longer than 75 bytes
@@ -79,6 +52,7 @@ module RFC5545
 
     /**
      * Parse the contents into an array of content lines
+     * As described here: https://datatracker.ietf.org/doc/html/rfc5545#section-3.1
      */
     function parseContentLines(input: string): Array<ContentLine>
     {
@@ -130,26 +104,6 @@ module RFC5545
         let contentLines: Array<ContentLine> = parseContentLines(input);
 
         console.log(contentLines);
-
-        //console.log(`OUTPUT:\n${input.substring(0, 500)}`);
-        // let block: Block;
-
-        // [input, block] = parseBegin(input);
-
-        /*
-        while (input.indexOf("BEGIN") !== -1)
-        {
-            let block = parseBegin(input);
-        };
-        */
-
-        // for (let line of input.split("\n"))
-        // {
-        //     console.log(line);
-        // }
-
-        // console.log(input.substring(0, 500));
-
     };
 };
 

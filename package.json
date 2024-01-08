@@ -2,11 +2,18 @@
     "name": "rfc5545",
     "version": "0.1.0",
     "description": "Internet Calendaring and Scheduling Core Object Specification (iCalendar) implementation",
-    "main": "./build/main.js",
+    "main": "build/index.js",
+    "types": "build/index.d.ts",
+    "type": "module",
+    "files": [
+        "build",
+        "README.md"
+    ],
     "scripts": {
         "build-production": "tsc --project tsconfig.json",
         "build-development": "tsc --project tsconfig.json --watch",
-        "run": "npm run build-production && node build/main.js"
+        "run": "npm run build-production && node build/test.js",
+        "test": ""
     },
     "author": {
         "name": "George Hester"

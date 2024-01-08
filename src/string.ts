@@ -1,3 +1,6 @@
+/**
+ * Extend string type with indexOfAll function
+ */
 String.prototype.indexOfAll = function (this: string, searchString: string): Array<number>
 {
     let output: Array<number> = [];
