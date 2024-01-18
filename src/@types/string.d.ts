@@ -1,4 +1,12 @@
-declare interface String
+export { };
+
+declare global
 {
-    indexOfAll(searchString: string): Array<number>;
+    interface String extends RelativeIndexable<string>
+    {
+        /**
+         * @returns {Array<number>} Array containing indexes of all matches or an empty array.
+         */
+        indexOfAll(searchString: string): Array<number>;
+    }
 }
