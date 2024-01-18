@@ -1,4 +1,5 @@
-import "./string.js";
+import { ContentLines } from "./content-lines";
+import "./string";
 
 // Lines are 75 bytes max
 // Lines seperated by CRLF
@@ -21,22 +22,11 @@ module RFC5545
     };
 
     /**
-     * Unfold lines longer than 75 bytes
-     * As described here: https://datatracker.ietf.org/doc/html/rfc5545#section-3.1
-     */
-    function unfold(input: string): string
-    {
-        // Replace all instances of a CRLF which are
-        // followed by a linear whitespace character
-        return input.replace(/\n\s/gm, "");
-    };
-
-    /**
      * Parse out data around the main calendar item
     */
     function preParse(input: string): string
     {
-        input = unfold(input);
+        input = ContentLines.unfold(input);
 
         // Find the start of the calendar data, removing all unneeded input
         // Throw errors if we cannot find the start of the calendar object
